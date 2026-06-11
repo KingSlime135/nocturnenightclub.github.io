@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About page Nocturne</title>
+  <link rel="icon" type="image/svg+xml" href="images/1_182.svg">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="global.css">
+  <style id="sections-styles">
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 100;
+  padding: 24px 0;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo img {
+  width: 32px;
+  height: 32px;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+.logo-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.logo-subtitle {
+  font-size: 12px;
+  color: var(--accent-cyan);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.main-nav {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+.nav-link {
+  color: var(--text-gray);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 8px;
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: var(--text-light);
+}
+.nav-link.active {
+  color: var(--accent-pink);
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-pink) 0%, var(--accent-cyan) 100%);
+  box-shadow: 0px 0px 10px 0px rgba(255, 45, 149, 0.6);
+}
+.btn-sm {
+  padding: 12px 24px;
+  font-size: 14px;
+}
+@media (max-width: 992px) {
+  .main-nav { display: none; }
+}
+
+.hero-section {
+  position: relative;
+  height: 840px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 97px; 
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,1) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 832px;
+}
+
+.hero-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tag-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.tracking-wide {
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hero-title {
+  font-size: 72px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.hero-description {
+  font-size: 20px;
+  max-width: 747px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 48px;
+  }
+  .hero-description {
+    font-size: 16px;
+  }
+  .hero-section {
+    height: 600px;
+  }
+}
+
+.concept-section {
+  background-color: #0a0a0a;
+  padding: 128px 0;
+  position: relative;
+}
+
+.concept-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,45,149,0) 0%, rgba(255,45,149,0.5) 50%, rgba(255,45,149,0) 100%);
+}
+
+.concept-container {
+  display: flex;
+  flex-direction: column;
+  gap: 128px;
+}
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.concept-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.concept-paragraphs p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.concept-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.image-blur-bg {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  width: 192px;
+  height: 192px;
+  background-color: #00f0ff;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 0px 60px 0px rgba(0, 240, 255, 0.3);
+  z-index: 2;
+}
+
+.concept-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.feature-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 45, 149, 0.3);
+  background: linear-gradient(135deg, rgba(255, 45, 149, 0.2) 0%, rgba(0, 240, 255, 0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.feature-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.feature-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.feature-desc {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .concept-grid {
+    grid-template-columns: 1fr;
+  }
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .concept-image-wrapper {
+    height: 300px;
+  }
+  .section-title {
+    font-size: 36px;
+  }
+}
+
+.site-footer {
+  background-color: #0a0a0a;
+  position: relative;
+  padding: 64px 0;
+}
+
+.footer-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,45,149,0) 0%, rgba(255,45,149,0.3) 50%, rgba(255,45,149,0) 100%);
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 448px;
+}
+
+.footer-desc {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-heading {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.hover-white:hover {
+  color: #ffffff;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.copyright {
+  font-size: 14px;
+}
+
+.legal-links {
+  display: flex;
+  gap: 32px;
+}
+
+.legal-links a {
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+  </style>
+</head>
+<body>
+<section id="section-header">
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <img src="images/1_182.svg" alt="Nocturne Logo">
+        <div class="logo-text">
+          <span class="logo-title">NOCTURNE</span>
+          <span class="logo-subtitle">Club</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="#section-footer" class="nav-link">Contact</a>
+      </nav>
+      <a href="#section-cta" class="btn btn-primary btn-sm">Book Table</a>
+    </div>
+  </header>
+</section>
+<section class="hero-section">
+  <div class="hero-background">
+    <img src="images/bbdc8041f9d6adc08730ce2d7256a398060b6e2b.png" alt="Club Interior" class="hero-image">
+    <div class="hero-overlay"></div>
+  </div>
+  
+  <div class="container hero-content">
+    <div class="hero-tag">
+      <img src="images/1_219.svg" alt="Star Icon" class="tag-icon">
+      <span class="text-cyan text-uppercase tracking-wide">Our Story</span>
+    </div>
+    
+    <h1 class="hero-title">About <span class="text-pink">Nocturne</span></h1>
+    
+    <p class="hero-description text-gray">
+      A sanctuary for those who seek the intersection of underground culture and premium nightlife
+    </p>
+  </div>
+</section>
+<section class="concept-section">
+  <div class="concept-divider"></div>
+  
+  <div class="container concept-container">
+    <div class="concept-grid">
+      <div class="concept-text-content">
+        <h2 class="section-title">The <span class="text-cyan">Concept</span></h2>
+        
+        <div class="concept-paragraphs">
+          <p class="text-gray">
+            Nocturne Club was born from a vision: to create a space where the raw, uninhibited energy of Berlin's underground scene merges seamlessly with the sleek aesthetics of a cyberpunk future.
+          </p>
+          
+          <p class="text-gray">
+            We're not just a nightclub—we're an immersive experience. Every element, from the pulsing bass that reverberates through your chest to the neon lights that paint the darkness, is carefully orchestrated to transport you to another dimension.
+          </p>
+          
+          <p class="text-gray">
+            Our commitment to excellence extends beyond the dance floor. We've partnered with world-renowned sound engineers and visual artists to ensure that every night at Nocturne is a journey into the extraordinary.
+          </p>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-divider"></div>
+  
+  <div class="container footer-container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <img src="images/1_358.svg" alt="Nocturne Logo Icon" class="logo-icon">
+          <div class="logo-text">
+            <span class="logo-title">NOCTURNE</span>
+            <span class="logo-subtitle text-cyan">Club</span>
+          </div>
+        </a>
+        <p class="footer-desc text-gray">
+          Premium nightlife destination where underground energy meets high-end cyberpunk aesthetics. Experience the night like never before.
+        </p>
+      </div>
+      
+      <div class="footer-links-group">
+        <h4 class="footer-heading text-cyan">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="text-gray hover-white">Home</a></li>
+          <li><a href="about.html" class="text-gray hover-white">About</a></li>
+          <li><a href="events.html" class="text-gray hover-white">Events</a></li>
+          <li><a href="#" class="text-gray hover-white">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-social">
+        <h4 class="footer-heading text-cyan">Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" class="btn-icon btn-icon-pink">
+            <img src="images/1_385.svg" alt="Instagram" class="social-icon">
+          </a>
+          <a href="#" class="btn-icon btn-icon-cyan">
+            <img src="images/1_390.svg" alt="Twitter/X" class="social-icon">
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="copyright text-dark-gray">© 2026 Nocturne Club. All rights reserved.</p>
+      <div class="legal-links">
+        <a href="#" class="text-dark-gray hover-white">Privacy Policy</a>
+        <a href="#" class="text-dark-gray hover-white">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

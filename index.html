@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main page Nocturne</title>
+  <link rel="icon" type="image/svg+xml" href="images/1_182.svg">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="global.css">
+  <style id="sections-styles">
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 100;
+  padding: 24px 0;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo img {
+  width: 32px;
+  height: 32px;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+.logo-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.logo-subtitle {
+  font-size: 12px;
+  color: var(--accent-cyan);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.main-nav {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+.nav-link {
+  color: var(--text-gray);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 8px;
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: var(--text-light);
+}
+.nav-link.active {
+  color: var(--accent-pink);
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-pink) 0%, var(--accent-cyan) 100%);
+  box-shadow: 0px 0px 10px 0px rgba(255, 45, 149, 0.6);
+}
+.btn-sm {
+  padding: 12px 24px;
+  font-size: 14px;
+}
+@media (max-width: 992px) {
+  .main-nav { display: none; }
+}
+
+.hero-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+}
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,1) 100%);
+  z-index: -2;
+}
+.hero-blur-pink {
+  position: absolute;
+  width: 448px;
+  height: 448px;
+  background: var(--accent-pink);
+  filter: blur(120px);
+  opacity: 0.2;
+  top: 20%;
+  left: 20%;
+  z-index: -1;
+  border-radius: 50%;
+}
+.hero-blur-cyan {
+  position: absolute;
+  width: 396px;
+  height: 396px;
+  background: var(--accent-cyan);
+  filter: blur(120px);
+  opacity: 0.2;
+  bottom: 20%;
+  right: 20%;
+  z-index: -1;
+  border-radius: 50%;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  z-index: 1;
+}
+.hero-title {
+  letter-spacing: 2px;
+}
+.hero-subtitle {
+  color: #d1d5dc;
+  font-size: 18px;
+  max-width: 672px;
+}
+.hero-actions {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 40px;
+  border: 2px solid var(--accent-cyan);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+.scroll-pill {
+  width: 4px;
+  height: 6px;
+  background-color: var(--accent-cyan);
+  border-radius: 2px;
+  animation: scroll 2s infinite;
+}
+@keyframes scroll {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(12px); opacity: 0; }
+}
+@media (max-width: 768px) {
+  .hero-actions { flex-direction: column; width: 100%; max-width: 300px; }
+  .hero-actions .btn { width: 100%; }
+}
+
+.events-wrapper {
+  padding: 128px 0;
+  background-color: var(--bg-dark);
+}
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.event-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0px 0px 20px 0px rgba(255, 45, 149, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 30px 0px rgba(255, 45, 149, 0.15);
+  border-color: rgba(255, 45, 149, 0.3);
+}
+.event-date {
+  color: var(--accent-cyan);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.event-title {
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+.event-dj {
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 18px;
+}
+.event-genre {
+  color: var(--text-dark-gray);
+  font-size: 14px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+.events-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.about-wrapper {
+  padding: 128px 0;
+  background-color: var(--bg-dark);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.about-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.about-image-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+.about-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 0px 60px 0px rgba(255, 45, 149, 0.2);
+}
+.about-blur {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+  background: var(--accent-pink);
+  filter: blur(100px);
+  opacity: 0.3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 1;
+}
+.about-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+.about-image-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top right, rgba(10,10,10,0.8) 0%, transparent 50%, transparent 100%);
+  z-index: 2;
+}
+@media (max-width: 992px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-image-container { height: 400px; }
+}
+
+.cta-wrapper {
+  position: relative;
+  padding: 128px 0;
+  background-color: var(--bg-dark);
+  overflow: hidden;
+}
+.cta-blur-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1024px;
+  height: 388px;
+  background: linear-gradient(90deg, rgba(255,45,149,0.1) 0%, rgba(0,240,255,0.1) 50%, rgba(255,45,149,0.1) 100%);
+  filter: blur(64px);
+  z-index: 0;
+  border-radius: 24px;
+}
+.cta-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+.cta-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+.cta-content p {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.site-footer {
+  background-color: var(--bg-dark);
+  padding: 64px 0 32px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 64px;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 448px;
+}
+.footer-brand p {
+  line-height: 1.6;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.footer-links h4 {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.footer-links nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-links a:hover {
+  color: var(--text-light);
+}
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.footer-social h4 {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+.social-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255,45,149,0.2) 0%, rgba(0,240,255,0.2) 100%);
+  border: 1px solid rgba(255, 45, 149, 0.3);
+  transition: all 0.3s ease;
+}
+.social-btn.cyan-border {
+  border-color: rgba(0, 240, 255, 0.3);
+}
+.social-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, rgba(255,45,149,0.4) 0%, rgba(0,240,255,0.4) 100%);
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-color);
+}
+.text-dark-gray {
+  color: var(--text-dark-gray);
+  font-size: 14px;
+}
+.legal-links {
+  display: flex;
+  gap: 32px;
+}
+.legal-links a:hover {
+  color: var(--text-gray);
+}
+@media (max-width: 768px) {
+  .footer-top { grid-template-columns: 1fr; gap: 48px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+  </style>
+</head>
+<body>
+<section id="section-header">
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <img src="images/1_182.svg" alt="Nocturne Logo">
+        <div class="logo-text">
+          <span class="logo-title">NOCTURNE</span>
+          <span class="logo-subtitle">Club</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="#section-footer" class="nav-link">Contact</a>
+      </nav>
+      <a href="#section-cta" class="btn btn-primary btn-sm">Book Table</a>
+    </div>
+  </header>
+</section>
+<section id="section-hero">
+  <div class="hero-wrapper">
+    <div class="hero-bg">
+      <img src="images/284a42069d17964adb2879179eb91c9ab4d26a9a.png" alt="Club Atmosphere">
+    </div>
+    <div class="hero-gradient"></div>
+    <div class="hero-blur-pink"></div>
+    <div class="hero-blur-cyan"></div>
+    
+    <div class="container hero-content">
+      <div class="tag">
+        <img src="images/1_17.svg" alt="Star icon">
+        Premium Nightlife
+      </div>
+      <h1 class="hero-title">FEEL THE <span class="text-cyan">NIGHT</span></h1>
+      <p class="hero-subtitle">Immerse yourself in an exclusive world where music, atmosphere, and<br>unforgettable experiences converge</p>
+      <div class="hero-actions">
+        <a href="#section-cta" class="btn btn-primary">Book a Table</a>
+        <a href="#section-featured-events" class="btn btn-outline-cyan">Explore Events</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-pill"></div>
+    </div>
+  </div>
+</section>
+<section id="section-featured-events">
+  <div class="section-divider"></div>
+  <div class="events-wrapper">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">
+          <img src="images/1_41.svg" alt="Calendar icon">
+          Upcoming
+        </div>
+        <h2>Featured <span class="text-cyan">Events</span></h2>
+        <p class="text-gray">Don't miss out on the hottest nights at Nocturne</p>
+      </div>
+
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-date">FRI, APR 18</div>
+          <h3 class="event-title">NEON NIGHTS</h3>
+          <div class="event-dj">DJ AURORA</div>
+          <div class="event-genre">Techno / House</div>
+        </div>
+        <div class="event-card">
+          <div class="event-date">SAT, APR 19</div>
+          <h3 class="event-title">VIOLET DREAMS</h3>
+          <div class="event-dj">SOLARIX</div>
+          <div class="event-genre">Deep House</div>
+        </div>
+        <div class="event-card">
+          <div class="event-date">FRI, APR 25</div>
+          <h3 class="event-title">AFTERDARK</h3>
+          <div class="event-dj">NEXUS</div>
+          <div class="event-genre">Progressive</div>
+        </div>
+      </div>
+
+      <div class="events-footer">
+        <a href="#" class="btn btn-outline-pink">
+          View All Events
+          <img src="images/1_86.svg" alt="Arrow Right">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="section-about">
+  <div class="section-divider cyan"></div>
+  <div class="about-wrapper">
+    <div class="container about-grid">
+      <div class="about-content">
+        <div class="tag">
+          <img src="images/1_94.svg" alt="Music icon">
+          About Nocturne
+        </div>
+        <h2>Where Music<br>Meets <span class="text-pink">Mystery</span></h2>
+        <p class="text-gray">Step into Nocturne Club—an underground sanctuary where Berlin's raw energy collides with high-end cyberpunk aesthetics. Our curated soundscapes and immersive lighting create an atmosphere that transcends the ordinary.</p>
+        <a href="#" class="btn btn-cyan">
+          Discover More
+          <img src="images/1_105.svg" alt="Arrow Right">
+        </a>
+      </div>
+      <div class="about-image-container">
+        <div class="about-image-wrapper">
+          <div class="about-blur"></div>
+          <img src="images/a2bae728757edb735f38bc95a3d649c6d4775a2c.png" alt="Club crowd">
+          <div class="about-image-gradient"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="section-cta">
+  <div class="section-divider"></div>
+  <div class="cta-wrapper">
+    <div class="cta-blur-bg"></div>
+    <div class="container cta-content">
+      <img src="images/1_118.svg" alt="Star icon large" class="cta-icon">
+      <h2>Ready to Experience<br><span class="text-pink">The</span> <span class="text-cyan">Extraordinary?</span></h2>
+      <p class="text-gray">Reserve your table now and join us for an unforgettable night where music, energy,<br>and luxury collide</p>
+      <a href="#" class="btn btn-primary">Book Your Table</a>
+    </div>
+  </div>
+</section>
+<section id="section-footer">
+  <div class="section-divider"></div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="images/1_135.svg" alt="Nocturne Logo">
+            <div class="logo-text">
+              <span class="logo-title">NOCTURNE</span>
+              <span class="logo-subtitle">Club</span>
+            </div>
+          </a>
+          <p class="text-gray">Premium nightlife destination where underground energy meets high-end cyberpunk aesthetics. Experience the night like never before.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4 class="text-cyan">Quick Links</h4>
+          <nav>
+            <a href="index.html" class="text-gray">Home</a>
+            <a href="about.html" class="text-gray">About</a>
+            <a href="events.html" class="text-gray">Events</a>
+            <a href="#section-footer" class="text-gray">Contact</a>
+          </nav>
+        </div>
+
+        <div class="footer-social">
+          <h4 class="text-cyan">Follow Us</h4>
+          <div class="social-icons">
+            <a href="#" class="social-btn">
+              <img src="images/1_162.svg" alt="Instagram">
+            </a>
+            <a href="#" class="social-btn cyan-border">
+              <img src="images/1_167.svg" alt="Twitter">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="text-dark-gray">© 2026 Nocturne Club. All rights reserved.</p>
+        <div class="legal-links">
+          <a href="#" class="text-dark-gray">Privacy Policy</a>
+          <a href="#" class="text-dark-gray">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>
+</body>
+</html>
